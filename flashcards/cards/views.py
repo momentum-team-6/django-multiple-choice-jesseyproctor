@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Deck, Card
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login, logout
 
 # Create your views here.
 def homepage(request):
@@ -10,25 +11,34 @@ def homepage(request):
 
 def register_user(request):
     if request.method == 'POST':
-        signup_form = UserCreationForm(request.POST)
-        if signup_form.is_valid():
-            signup_form.save()
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            #save user
+            form.save()
             #log user in
-            return redirect(homepage.html) #where should I redirect
+            login(request,user)
+            return redirect('homepage') #where should I redirect
     else:
-        signup_form = UserCreationForm()
-    return render(request, 'register_user.html', {'signup_form':signup_form})
+        form = UserCreationForm()
+    return render(request, 'register_user.html', {'form':form})
 
 
-def login(request):
+def login_view(request):
     if request.method =='POST':
-        login_form = AuthenticationForm(data=request.POST)
-        if login_form.is_valid():
-            #log in user
-            return redirect(homepage.html) #where should I redirect
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            #log in user 
+            user = form.get_user()
+            login(request,user)
+            return redirect('homepage') #where should I redirect
     else:
-        login_form = AuthenticationForm()
-    return render(request, 'login.html', {'login_form':login_form})
+        form = AuthenticationForm()
+    return render(request, 'login.html', {'form':form})
+
+def logout_view(request):
+    if request.method =='POST':
+        logout(request)
+        return redirect('homepage')
 
 def make_deck(request):
     pass

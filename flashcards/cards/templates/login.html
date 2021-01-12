@@ -7,9 +7,9 @@
 <!-- action attribute on form tag is used to specify where the formdata is to be sent to the server after submission of the form -->
 <form class='form' action='login.html' method='post'> 
     {% csrf_token %}
-    {{ login_form }}
+    {{ form }}
 
-    <input tpye='submit' value='Login'>
+    <input type='submit' value='Login'>
 </form>
 
 {% endblock %}
