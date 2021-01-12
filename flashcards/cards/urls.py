@@ -10,7 +10,7 @@ urlpatterns = [
     path('cards/edit/', views.edit_card, name='edit_card'),
     path('cards/delete/', views.delete_card, name='delete_card'),
     path('decks/view/', views.view_deck, name='view_deck'),
-    path('signup/', views.register_user, name='register_user'),
+    path('signup/', views.signup_view, name='signup_view'),
     path('login/', views.login_view, name='login_view'),
     path('logout/', views.logout_view, name='logout_view'),
 ]

@@ -12,18 +12,18 @@ def homepage(request):
     context = {'decks': decks}
     return render(request, 'homepage.html', context)
 
-def register_user(request):
+def signup_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             #save user
-            form.save()
+            user = form.save()
             #log user in
-            login(request,user)
-            return redirect('homepage') #where should I redirect
+            login(request, user)
+            return redirect('homepage') #where should I redirect, lookup to = 
     else:
         form = UserCreationForm()
-    return render(request, 'register_user.html', {'form':form})
+    return render(request, 'signup_view.html', {'form':form})
 
 
 def login_view(request):
