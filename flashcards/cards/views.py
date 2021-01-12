@@ -2,10 +2,13 @@ from django.shortcuts import render, redirect
 from .models import Deck, Card
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
+from .forms import DeckForm, CardForm
+from django.urls import reverse
 
 # Create your views here.
 def homepage(request):
     decks = Deck.objects.all().order_by('-date')
+    #stored context in a variable to remind myself what's happening
     context = {'decks': decks}
     return render(request, 'homepage.html', context)
 
@@ -41,7 +44,17 @@ def logout_view(request):
         return redirect('homepage')
 
 def make_deck(request):
-    pass
+    if request.method == 'POST':
+        form = DeckForm(request.POST)
+        # check if form is valid
+        if form.is_valid():
+            #save the form, this saves the object to the database
+            form.save()
+            return redirect(reverse('homepage'))
+    else:
+        form = DeckForm()
+    context = {'form': form}
+    return render(request, 'flashcards/createAndEditDeck.html', context)
 
 
 def delete_deck(request):
