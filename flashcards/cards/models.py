@@ -14,7 +14,7 @@ class Card(models.Model):
 class Deck(models.Model): 
     title = models.CharField(max_length=100, null=False, blank=False)
     description = models.TextField(max_length=1000, null=False, blank=True) #User can leave blank
-    datetime = models.DateTimeField(auto_now_add=True) #add date for ordering purposes
+    date = models.DateTimeField(auto_now_add=True) #add date for ordering purposes
     
 
     def __str__(self):

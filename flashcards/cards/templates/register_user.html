@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Signup</h1>
+
+<!-- action attribute on form tag is used to specify where the formdata is to be sent to the server after submission of the form -->
+<form class='form' action='register_user.html' method='post'> 
+    {% csrf_token %}
+    {{ signup_form }}
+
+    <input tpye='submit' value='Signup'>
+</form>
+
+{% endblock %}
