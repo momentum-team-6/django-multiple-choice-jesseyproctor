@@ -20,7 +20,7 @@ def signup_view(request):
             user = form.save()
             #log user in
             login(request, user)
-            return redirect('homepage') #where should I redirect, lookup to = 
+            return redirect('login_view') #where should I redirect, lookup to = 
     else:
         form = UserCreationForm()
     return render(request, 'signup_view.html', {'form':form})
@@ -35,6 +35,7 @@ def login_view(request):
             user = form.get_user()
             login(request,user)
             return redirect('homepage') #where should I redirect
+            #add create deck link on homepage or redirect to create deck
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form':form})
@@ -50,12 +51,12 @@ def make_deck(request):
         # check if form is valid
         if form.is_valid():
             #save the form
-            form.save()
-            return redirect(reverse('homepage'))
+            new_deck = form.save()
+            return redirect('make_card', pk=new_deck.pk )
+            
     else:
         form = DeckForm()
-    context = {'form': form}
-    return render(request, 'make_edit_deck.html', context)
+    return render(request, 'make_edit_deck.html', {'form': form} )
 
 
 def delete_deck(request):
@@ -72,7 +73,7 @@ def make_card(request, pk):
         form = CardForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(reverse('view_deck')) #did I do this right? ask about pk=pk like ajax example
+            return redirect(reverse('view_deck', deck_obj.pk)) 
     else:
         #The initial argument lets you specify the initial value to use when rendering this Field in an unbound Form
         form = CardForm(initial={'parentDeck':deck_obj})
@@ -87,7 +88,14 @@ def edit_card(request):
     pass
 
 
-def view_deck(request):
+def view_deck(request, pk):
+    # deck_obj = get_object_or_404(Deck, pk)
+    # card_list = deck_obj.card_set.all()
+    # card_obj = card_list.first()
+    # if request.method == 'GET' and 'card' in request.GET:
+    #     card_obj = get_object_or_404(Card, pk=request.GET['card'])
+    # context = {'deck_obj': deck_obj, 'card_obj':card_obj}
+    # return render(request, 'flashcards/viewDeck.html', context)
     pass
 
 
