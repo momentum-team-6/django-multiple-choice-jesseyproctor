@@ -2,45 +2,35 @@
 
 {% block content %}
 
-<h1>{{deck_obj}}</h1>
+<div class="title">
+    <h1>{{deck_obj}}</h1>
+</div>
+<br>
 
-<div class="card">
+<div class="flashcard">
     <div class="card-front">
-        <p class='text-centered'>Front</p>
+        <p class='text'>Front</p>
         <p>{{card_obj.front}}</p>
     </div>
     <div class="card-back">
-        <p class='text-centered'>Back</p>
+        <p class='text'>Back</p>
         <p>{{card_obj.back}}</p>
     </div>
 </div>
 
-<!-- link to make a new card for deck: -->
-<div>
-    <a href="{% url 'make_card' deck_obj.pk %}">Add Card</a>
+<div class="flashcard-actions text">
+{% if card_obj %}
+    {% if card_obj.has_prev_card %}
+        <a href="{% url 'view_deck' deck_obj.pk %}?card={{card_obj.get_prev_card.pk}}">Prev</a>
+    {% endif %}
+    {% if card_obj.has_next_card %}
+        <a href="{% url 'view_deck' deck_obj.pk %}?card={{card_obj.get_next_card.pk}}">Next</a>
+    {% endif %}
+{% endif %}
 </div>
 
-<script type='text/javascript'>
-    const front = document.querySelector('.card-front')
-    const back = document.querySelector('.card-back')
-    const card = document.querySelector('.card')
-
-//   onlick is event attribute that works on button elements
-    card.onclick = function(){
-        flipCard()
-    }
-
-    // style.display resets elements display property to default
-    function flipCard(){
-        if (front.style.display === 'none'){
-            front.style.display = 'block'
-            back.style.display = 'none'
-        } else {
-            front.style.display = 'none'
-            back.style.display = 'block'
-        }
-    }
-</script>
-
+<div class="links">
+    <a href="{% url 'make_card' deck_obj.id %}">Add Card</a>
+  </div>
 
 {% endblock %}

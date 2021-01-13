@@ -11,6 +11,30 @@ class Card(models.Model):
     def __str__(self):
         return self.front
 
+    def has_prev_card(self):
+    #True if the current card isn't the first card in your deck
+        first_card_in_deck = self.parentDeck.card_set.first()
+        if self == first_card_in_deck:
+            return False
+        return True
+
+    def get_prev_card(self):
+    #to get last card you looked at
+        return self.parentDeck.card_set.filter(id__lt=self.id).last()
+
+
+    def has_next_card(self):
+    #True if current card isnt the last one in your deck
+        last_card_in_deck = self.parentDeck.card_set.last()
+        if self == last_card_in_deck:
+            return False
+        return True
+
+    def get_next_card(self):
+    #Gives you the next card in your deck
+        return self.parentDeck.card_set.filter(id__gt=self.id).first()
+
+
 
 class Deck(models.Model): 
     title = models.CharField(max_length=100, null=False, blank=False)
@@ -20,5 +44,6 @@ class Deck(models.Model):
 
     def __str__(self):
         return self.title
+
 
 
