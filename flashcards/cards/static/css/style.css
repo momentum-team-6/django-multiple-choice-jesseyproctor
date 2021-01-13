@@ -7,12 +7,31 @@ body {
     width: 80%;
     max-width: 500px;
     height: 300px;
+    /* background-image: url('../images/yellow-postit.jpg'); */
+    /* background-image: url('../images/flashcards.jpg'); */
     background-image: url('../images/notecards.jpg');
     background-size: 100% 100%;
     margin: auto;
     padding: 20px;
-  }
-  
-  .card-back {
+    border: solid 1px rgb(204, 193, 193);
+    border-radius: 25px;
+}
+
+.card-back {
     display: none;
-  }
+}
+
+.text {
+    text-align: center;
+}
+
+.card-front {
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 200px;
+    /* text-decoration: none; */
+}
+
+.links {
+    color:black
+}

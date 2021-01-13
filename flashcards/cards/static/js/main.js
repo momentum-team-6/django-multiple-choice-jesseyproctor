@@ -1,13 +1,10 @@
-
+// debugger;
 const front = document.querySelector('.card-front')
 const back = document.querySelector('.card-back')
-const card = document.querySelector('.card')
+const card = document.querySelector('.flashcard')
 
-// //   onlick is event attribute that works on button elements
-//     card.onclick = function(){
-//         flipCard()
-//     }
 card.addEventListener('click', function(event){
+    // debugger;
     flipCard()
 })
 // style.display resets elements display property to default
