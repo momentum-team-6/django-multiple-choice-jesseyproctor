@@ -4,7 +4,7 @@ from datetime import datetime
 
 # Create your models here.
 class Card(models.Model):
-    parentDeck = models.ForeignKey('Deck', on_delete=models.CASCADE) #Deck in quotes because Deck model read after this one.
+    parentDeck = models.ForeignKey('Deck', on_delete=models.CASCADE) #Deck in quotes because Deck model read after this one. #on delete, cascade means delete all children of parents when you delete parent
     front = models.TextField()
     back = models.TextField()
 

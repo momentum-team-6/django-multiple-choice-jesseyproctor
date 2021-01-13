@@ -10,4 +10,4 @@ class DeckForm(ModelForm):
 class CardForm(ModelForm):
     class Meta:
         model = Card
-        fields = ['parentDeck', 'front', 'back']
+        fields = ['front', 'back']
