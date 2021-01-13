@@ -41,6 +41,7 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, 'login.html', {'form':form})
 
+#need template for logout
 def logout_view(request):
     if request.method =='POST':
         logout(request)
@@ -49,7 +50,7 @@ def logout_view(request):
 @login_required(login_url='login/')
 def make_deck(request):
     #GET renders the form, POST adds form info to database
-    #decks are not associated with a specific user.  Fix in models by giving the deck class a user?
+    #decks are not currently associated with a specific user. 
     if request.method == 'GET':
         form = DeckForm()
     if request.method == 'POST':
