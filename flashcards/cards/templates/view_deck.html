@@ -1,9 +1,46 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
 
 {% block content %}
 
 <h1>{{deck_obj}}</h1>
+
+<div class="card">
+    <div class="card-front">
+        <p class='text-centered'>Front</p>
+        <p>{{card_obj.front}}</p>
+    </div>
+    <div class="card-back">
+        <p class='text-centered'>Back</p>
+        <p>{{card_obj.back}}</p>
+    </div>
+</div>
+
+<!-- link to make a new card for deck: -->
+<div>
+    <a href="{% url 'make_card' deck_obj.pk %}">Add Card</a>
+</div>
+
+<script type='text/javascript'>
+    const front = document.querySelector('.card-front')
+    const back = document.querySelector('.card-back')
+    const card = document.querySelector('.card')
+
+//   onlick is event attribute that works on button elements
+    card.onclick = function(){
+        flipCard()
+    }
+
+    // style.display resets elements display property to default
+    function flipCard(){
+        if (front.style.display === 'none'){
+            front.style.display = 'block'
+            back.style.display = 'none'
+        } else {
+            front.style.display = 'none'
+            back.style.display = 'block'
+        }
+    }
+</script>
 
 
 {% endblock %}
