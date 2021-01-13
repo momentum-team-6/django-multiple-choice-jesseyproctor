@@ -20,7 +20,8 @@ class Card(models.Model):
 
     def get_prev_card(self):
     #to get last card you looked at
-        return self.parentDeck.card_set.filter(id__lt=self.id).last()
+    #filter argument lt is less than.  Use gt to move the other direction
+        return self.parentDeck.card_set.filter(pk__lt=self.pk).last()
 
 
     def has_next_card(self):
@@ -32,7 +33,7 @@ class Card(models.Model):
 
     def get_next_card(self):
     #Gives you the next card in your deck
-        return self.parentDeck.card_set.filter(id__gt=self.id).first()
+        return self.parentDeck.card_set.filter(pk__gt=self.pk).first()
 
 
 
