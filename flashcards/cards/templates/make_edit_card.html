@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Make a Flashcard!</h1>
-<form method='POST'>
-    {% csrf_token %}
-    <table>
-<!-- as table method lets you re -->
-    {{ form.as_table }} 
-    </table>
-<input type="submit" value="Submit Form">
-</form>
+    
+<div class='make-card-container'>
+    <h1>Make a Flashcard!</h1>
 
+    <form method='POST'>
+        {% csrf_token %}
+        <table>
+    <!-- as table method lets you re -->
+        {{ form.as_table }} 
+        </table>
+    <input type="submit" value="Submit Form">
+    </form>
+</div>
 {% endblock %}

@@ -2,36 +2,38 @@
 
 {% block content %}
 
-<div class="title">
-    <h1>{{deck_obj}}</h1>
-</div>
-<br>
-
-<div class="flashcard">
-    <div class="card-front text">
-        <!-- <p>Front</p> -->
-        <p>{{card_obj.front}}</p>
+<div class="body">
+    <div class="title">
+        <h1>{{deck_obj}}</h1>
     </div>
-    <div class="card-back text">
-        <!-- <p>Back</p> -->
-        <p>{{card_obj.back}}</p>
+
+    <div class="links">
+        <a href="{% url 'make_card' deck_obj.id %}">Add Card</a>
     </div>
-</div>
 
-<div class="flashcard-actions text">
-{% if card_obj %}
-    {% if card_obj.has_prev_card %}
-        <a href="{% url 'view_deck' deck_obj.pk %}?card={{card_obj.get_prev_card.pk}}">Prev</a>
-    {% endif %}
-    {% if card_obj.has_next_card %}
-        <a href="{% url 'view_deck' deck_obj.pk %}?card={{card_obj.get_next_card.pk}}">Next</a>
-    {% endif %}
-{% endif %}
-</div>
-<br>
+    <div class="flashcard">
+        <div class="card-front text">
+            <!-- <p>Front</p> -->
+            <p>{{card_obj.front}}</p>
+        </div>
+        <div class="card-back text">
+            <!-- <p>Back</p> -->
+            <p>{{card_obj.back}}</p>
+        </div>
+    </div>
 
-<div class="links">
-    <a href="{% url 'make_card' deck_obj.id %}">Add Card</a>
-  </div>
+    <div class="flashcard-actions text">
+    {% if card_obj %}
+        {% if card_obj.has_prev_card %}
+            <a href="{% url 'view_deck' deck_obj.pk %}?card={{card_obj.get_prev_card.pk}}">Prev</a>
+        {% endif %}
+        {% if card_obj.has_next_card %}
+            <a href="{% url 'view_deck' deck_obj.pk %}?card={{card_obj.get_next_card.pk}}">Next</a>
+        {% endif %}
+    {% endif %}
+    </div>
+    <br>
+
+</div>
 
 {% endblock %}

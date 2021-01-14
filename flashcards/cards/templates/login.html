@@ -2,14 +2,16 @@
 
 {% block content %}
 
-<h1>Login</h1>
+<div class='login-container'></div>
+    <h1>Login</h1>
 
-<!-- action attribute on form tag is used to specify where the formdata is to be sent to the server after submission of the form -->
-<form class='form' action="{% url 'login_view' %}" method='post'> 
-    {% csrf_token %}
-    {{ form }}
+    <!-- action attribute on form tag is used to specify where the formdata is to be sent to the server after submission of the form -->
+    <form class='form' action="{% url 'login_view' %}" method='post'> 
+        {% csrf_token %}
+        {{ form }}
 
-    <input type='submit' value='Login'>
-</form>
+        <input type='submit' value='Login'>
+    </form>
+</div>
 
 {% endblock %}

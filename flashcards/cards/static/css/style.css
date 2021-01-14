@@ -1,19 +1,50 @@
 body {
+    /* background-image:url('../images/notepad-dark.webp'); */
     background-image:url('../images/desk-light.jpg');
-    /* background-image:url('../images/desk-dark.jpg'); */
+}
+
+.deck-link {
+    padding-left: 60px;
+}
+
+.header {
+    padding-left: 30px;
+}
+
+.signup-container {
+    padding-left: 20px;
+}
+
+.login-container {
+    padding-left: 20px;
+}
+
+.make-deck-container {
+    padding-left: 20px;
+}
+
+.make-card-container {
+    padding-left: 20px;
+}
+
+.body {
+    background-image:url('../images/notepad-dark.webp');
+    /* background-image:url('../images/desk-light.jpg'); */
+    background-size: 100%;
+    margin-top: -30px;
 }
 
 .flashcard {
     width: 80%;
-    max-width: 500px;
-    height: 300px;
-    /* background-image: url('../images/yellow-postit.jpg'); */
-    /* background-image: url('../images/flashcards.jpg'); */
-    background-image: url('../images/notecards.jpg');
+    max-width: 350px;
+    height: 250px;
+    /* background-image: url('../images/notepad-dark.webp'); */
+    /* background-image: url('../images/notecards.jpg'); */
     background-size: 100% 100%;
     margin: auto;
-    padding: 20px;
-    border: solid 1px rgb(204, 193, 193);
+    margin-top: 160px;
+    margin-bottom: 30px;
+    border: dotted 1px black;
     border-radius: 25px;
 }
 
@@ -29,9 +60,17 @@ body {
     font-size: 25px;
     font-weight: bold;
     line-height: 200px;
-    /* text-decoration: none; */
 }
 
-.links {
-    color:black
+.title {
+    color: white;
+    padding-top: 10px;
 }
+
+/* .links {
+
+} */
+
+/* a {
+    background-color:black
+} */

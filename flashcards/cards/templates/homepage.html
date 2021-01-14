@@ -2,14 +2,18 @@
 
 {% block content %}
 
-<h3>Select your deck:</h3>
-</br>
-{% if decks %}
-    {% for deck in decks %}
-        <a class='my-button' href="{% url 'view_deck' deck.pk %}">{{deck.title}}</a>
-    {% endfor %}
-{% else %}
-    <h1>No decks found</h1>
-{% endif %}
+<div class='header'>
+    <h3>Select your deck:</h3>
+</div>
+    </br>
+<div class='deck-link'>    
+    {% if decks %}
+        {% for deck in decks %}
+            <a class='my-button' href="{% url 'view_deck' deck.pk %}">{{deck.title}}</a>
+        {% endfor %}
+    {% else %}
+        <h1>No decks found</h1>
+    {% endif %}
+</div>
   
 {% endblock %}

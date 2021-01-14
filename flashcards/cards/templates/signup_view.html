@@ -2,15 +2,17 @@
 
 {% block content %}
 
-<h1>Signup</h1>
+<div class='signup-container'>
+    <h1>Signup</h1>
 
-<!-- action attribute on form tag is used to specify where the formdata is to be sent to the server after submission of the form -->
-<form class='form' action="{% url 'signup_view' %}" method='post'> 
-    {% csrf_token %}
-    {{ form }}
+    <!-- action attribute on form tag is used to specify where the formdata is to be sent to the server after submission of the form -->
+    <form class='form' action="{% url 'signup_view' %}" method='post'> 
+        {% csrf_token %}
+        {{ form }}
 
-    <!-- input feilds are buggy on both signup and login. Check syntax of forms imported in views   -->
-    <input type='submit' value='Signup'>
-</form>
+        <!-- input feilds are buggy on both signup and login. Check syntax of forms imported in views   -->
+        <input type='submit' value='Signup'>
+    </form>
+    </div>
 
 {% endblock %}
