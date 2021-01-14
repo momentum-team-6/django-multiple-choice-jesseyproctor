@@ -3,6 +3,7 @@ body {
     background-image:url('../images/desk-light.jpg');
 }
 
+
 .deck-link {
     padding-left: 60px;
 }
@@ -40,7 +41,6 @@ body {
     height: 250px;
     /* background-image: url('../images/notepad-dark.webp'); */
     /* background-image: url('../images/notecards.jpg'); */
-    background-size: 100% 100%;
     margin: auto;
     margin-top: 160px;
     margin-bottom: 30px;
@@ -67,10 +67,37 @@ body {
     padding-top: 10px;
 }
 
-/* .links {
+.links {
+    color: rgb(245, 209, 209);
+}
 
-} */
+.links:hover {
+    color: rgb(248, 245, 245);
+}
 
-/* a {
-    background-color:black
-} */
+.flashcard-actions a {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.flashcard-actions a:hover {
+    color:rgb(126, 86, 86)
+}
+
+.my-button {
+    display: block;
+    width: 200px;
+    margin: 10px;
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.my-button:hover {
+    color: rgb(162, 116, 116);
+}
