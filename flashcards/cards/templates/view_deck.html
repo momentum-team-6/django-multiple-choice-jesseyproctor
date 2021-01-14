@@ -30,6 +30,9 @@
         {% if card_obj.has_next_card %}
             <a href="{% url 'view_deck' deck_obj.pk %}?card={{card_obj.get_next_card.pk}}">Next</a>
         {% endif %}
+        {% if card_obj %}
+            <a href="{% url 'edit_card' card_obj.pk %}">Edit</a>
+        {% endif %}
     {% endif %}
     </div>
     <br>

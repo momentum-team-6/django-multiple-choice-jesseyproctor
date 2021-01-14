@@ -95,12 +95,25 @@ def make_card(request, deck_pk):
     return render(request, 'make_edit_card.html', {'form': form})
         
 
-def delete_card(request):
-    pass
+def delete_card(request, card_pk):
+    card_obj = get_object_or_404(Card, pk=card_pk)
+    
+    card_obj.delete()
+    return redirect(to='view_deck', deck_pk=card_obj.parentDeck.pk)
 
 
-def edit_card(request):
-    pass
+def edit_card(request, card_pk):
+    #the instance allows it to grab a particular card to edit
+    card_obj = get_object_or_404(Card, pk=card_pk)
+    if request.method == 'POST':
+        form = CardForm(request.POST, instance=card_obj)
+        if form.is_valid():
+            form.save()
+            return redirect('homepage')#figure out how to return to view deck
+    else:
+        form = CardForm(instance=card_obj)
+    context = {'form':form, 'edit_mode':True, 'card_obj':card_obj}
+    return render(request, 'make_edit_card.html', context)
 
 
 def view_deck(request, deck_pk):

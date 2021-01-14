@@ -12,6 +12,7 @@ class Card(models.Model):
         return self.front
 
     def has_prev_card(self):
+    #self represents the instance of the class
     #True if the current card isn't the first card in your deck
         first_card_in_deck = self.parentDeck.card_set.first()
         if self == first_card_in_deck:

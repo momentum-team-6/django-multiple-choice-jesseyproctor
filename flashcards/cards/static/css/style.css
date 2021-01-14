@@ -101,3 +101,12 @@ body {
 .my-button:hover {
     color: rgb(162, 116, 116);
 }
+
+.delete-card {
+    color:black;
+    text-decoration: none;
+}
+
+.delete-card:hover {
+    color: rgb(162, 116, 116);
+}
