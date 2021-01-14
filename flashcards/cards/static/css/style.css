@@ -67,6 +67,10 @@ body {
     padding-top: 10px;
 }
 
+#links {
+    list-style-type: none;
+}
+
 .links {
     color: rgb(245, 209, 209);
 }

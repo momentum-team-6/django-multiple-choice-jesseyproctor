@@ -7,10 +7,14 @@
         <h1>{{deck_obj}}</h1>
     </div>
 
-    <div>
-        <a class="links" href="{% url 'make_card' deck_obj.pk %}">Add Card</a>
-        <a class="links" href="{% url 'edit_deck' deck_obj.pk %}">Edit Deck</a>
-    </div>
+    <ul id="links">
+        <li>
+            <a class="links" href="{% url 'make_card' deck_obj.pk %}">Add Card</a>
+        </li>
+        <li>
+            <a class="links" href="{% url 'edit_deck' deck_obj.pk %}">Edit Deck</a>
+        </li>
+    </ul>
 
     <div class="flashcard">
         <div class="card-front text">
