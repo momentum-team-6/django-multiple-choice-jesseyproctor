@@ -43,9 +43,10 @@ def login_view(request):
 
 #need template for logout
 def logout_view(request):
-    if request.method =='POST':
+    if request.method == 'GET':
         logout(request)
-        return redirect('homepage')
+    return redirect('homepage')
+    
 
 @login_required(login_url='login/')
 def make_deck(request):
@@ -77,7 +78,7 @@ def edit_deck(request, deck_pk):
         form = DeckForm(request.POST, instance=deck_obj)
         if form.is_valid():
             form.save()
-            return redirect(to='view_deck', deck_pk=card_obj.parentDeck.pk)
+            return redirect(to='view_deck', deck_pk=deck_obj.pk)
     else:
         form = DeckForm(instance=deck_obj)
     context = {'form': form, 'edit_mode':True, 'deck_obj':deck_obj}

@@ -16,7 +16,7 @@
     <br>
     <div>
         {% if edit_mode %}
-            <a class="delete-card" href="{% url 'delete_card'  card_obj.pk %}"> Delete This Card</a>
+            <a class="delete" href="{% url 'delete_card'  card_obj.pk %}"> Delete This Card</a>
         {% endif %}
     </div>
 </div>

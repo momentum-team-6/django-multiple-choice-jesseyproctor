@@ -12,5 +12,11 @@
     </table>
   <input type="submit" value="Submit Form">
   </form>
+  <br>
+  <div> 
+    {% if edit_mode %}
+      <a class="delete" href="{% url 'delete_deck' deck_obj.pk %}"> Delete Deck</a>
+    {% endif %}
+  </div> 
 </div> 
 {% endblock %}

@@ -8,7 +8,8 @@
     </div>
 
     <div>
-        <a class="links" href="{% url 'make_card' deck_obj.id %}">Add Card</a>
+        <a class="links" href="{% url 'make_card' deck_obj.pk %}">Add Card</a>
+        <a class="links" href="{% url 'edit_deck' deck_obj.pk %}">Edit Deck</a>
     </div>
 
     <div class="flashcard">
